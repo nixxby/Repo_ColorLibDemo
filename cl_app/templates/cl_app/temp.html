@@ -1,0 +1,100 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        label{
+            color: yellow;
+            align-items: center;
+        }
+        
+        input{
+            color: yellow;
+            background-color: black;
+            text-decoration-color: antiquewhite;
+        }
+        body{
+            /* background-color: black; */
+            background-image: url("{% static '/cl_app/images/images.jpg' %}");
+        }
+        span{
+            color: red;
+
+            background-color: aqua;
+            transition-timing-function: ease-in-out;
+            transition-delay: 5s;
+
+        }
+        table{
+            position: absolute;
+            top: 20%;
+            left:20%;
+            background-color: red;
+        }
+        br{
+            color: black;
+        }
+    </style>
+    
+    <script>
+    function check_uname(){
+        var u=document.frm.uname.value;
+        var reg = /^[a-z A-z]+$/;
+        if(u.trim()=="")
+            {
+                document.getElementById("uname").innerHTML=" Please Enter Username! ";
+            }
+        else if(!reg.test(u)){
+            document.getElementById("uname").innerHTML=" Enter only Alphabets !! ";
+        }
+        else{
+            document.getElementById("uname").innerHTML=" UserName Accepted !!! ";    
+        }
+    }
+    function check_email() {
+        var em=document.frm.email.value;
+        var reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(em.trim()=="")
+            {
+                document.getElementById("email").innerHTML=" Please Enter Email! ";
+            }
+        else if(!reg.test(em)){
+            document.getElementById("email").innerHTML=" Invalid Email Address!! ";
+        }
+        else{
+            document.getElementById("email").innerHTML=" Email Accepted!!! ";    
+        }    
+    }
+    
+    </script>
+</head>
+<body> 
+    <form name="frm">
+        <table align="center" >
+            <tr>
+                <td><label >Username: </label></td>
+                <td><input class="text" type="text" onblur="check_uname();" name="uname" placeholder="Username" required=""></td>
+                <td><span id="uname"></span></td>
+            </tr>
+            <tr>
+                <td><label >Email: </label></td>
+                <td><input class="text email" type="email" onblur="check_email();" name="email" placeholder="Email" required=""></td>
+                <td><span id="email"></span></td>
+            </tr>
+            <tr>
+                <td><label >Password: </label></td>
+                <td><input class="text" type="password" name="pwd" placeholder="Password" required=""></td>
+            </tr>
+            <br> <br>
+            <tr>
+                <td><input type="submit" value="Register"></td>
+                <!-- <td><span id="submit"></span></td> -->
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
